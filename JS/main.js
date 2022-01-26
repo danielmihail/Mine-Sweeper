@@ -1,7 +1,5 @@
 'use strict'
 
-'use strict'
-
 var CELL = null;
 var FLAG = '🚩';
 var SHOW = 'SHOW';
@@ -14,9 +12,9 @@ var gSize = 12;
 var gMines = 30;
 var gFlagsCount = 30;
 var gLevels = [
-	{ id: 1, name: 'begginer', size: 4, mines: 3 },
+	{ id: 1, name: 'Easy', size: 4, mines: 3 },
 	{ id: 2, name: 'Medium', size: 8, mines: 15 },
-	{ id: 3, name: 'Expert', size: 12, mines: 30 }
+	{ id: 3, name: 'Hard', size: 12, mines: 30 }
 ]
 var gBoard = buildBoard();
 var gFirstClick = true;
@@ -93,7 +91,7 @@ function renderBoard(board) {
 		}
 		strHTML += '</tr>\n';
 	}
-	// console.log(strHTML);
+
 	var elBoard = document.querySelector('.board');
 	elBoard.innerHTML = strHTML;
 }
@@ -132,7 +130,7 @@ function cellClicked(elCell, event) {
 			gIcon = SAD;
 			gameOver(true);
 		}
-		gameOver(isVictory());		//check if game is over
+		gameOver(isVictory());		
 	}
 	renderBoard(gBoard);
 }
@@ -168,7 +166,7 @@ function cellMarked(elCell, event) {
 	}
 }
 
-function addCountOfNegs(i, j) {		//shown as number of mines around cell
+function addCountOfNegs(i, j) {	
 	addMines(i, j);
 	for (var m = 0; m < gBoard.length; m++) {
 		for (var n = 0; n < gBoard[0].length; n++) {
@@ -185,16 +183,16 @@ function addMines(i, j) {
 		var mineLocation = getMineCoord(gBoard);
 		var negs = findNegs(i, j);
 		var isNeg = false;
-		for (var k = 0; k < negs.length; k++) {							// avoid mines around first clicked cell
+		for (var k = 0; k < negs.length; k++) {							
 			if (negs[k] === mineLocation) {
 				var isNeg = true;
 				break;
 			}
 		}
-		if (!isNeg && mineLocation.mine === false) {				//avoid 2 mines on same cell
+		if (!isNeg && mineLocation.mine === false) {				
 			mineLocation.mine = true;
 			count++;
-			// console.log('mine at: ', mineLocation.location);
+			
 		}
 	}
 }
@@ -203,12 +201,11 @@ function addMines(i, j) {
 function getMineCoord() {
 	var i = getRandomInt(0, gSize - 1);
 	var j = getRandomInt(0, gSize - 1);
-	// console.log(i, j);
 	return gBoard[i][j];
 }
 
 
-function findNegs(i, j) {			// neighbour => neg
+function findNegs(i, j) {
 	var negs = [];
 	for (var m = -1; m < 2; m++) {
 		if (gBoard[i + m] !== undefined) {
@@ -220,7 +217,6 @@ function findNegs(i, j) {			// neighbour => neg
 			}
 		}
 	}
-	// console.log('negs: ', negs);
 	return negs;
 }
 
@@ -229,7 +225,6 @@ function countNegsMine(negs) {
 	var count = 0;
 	for (var i = 0; i < negs.length; i++) {
 		if (negs[i].mine) count++;
-		// console.log('count mines: ', count, negs[i].mine);
 	}
 	return count;
 }
@@ -240,6 +235,7 @@ function gameOver(isTrue) {
 		for (var i = 0; i < gBoard.length; i++) {
 			for (var j = 0; j < gBoard[0].length; j++) {
 				if (gBoard[i][j].mine === true) gBoard[i][j].type = SHOW;
+				// if (gBoard[i][j].mine === mine) stop();
 			}
 		}
 		clearInterval(gTime);
@@ -285,7 +281,6 @@ function getLevel(elLevel) {
 			gSize = gLevels[i].size;
 			gMines = gLevels[i].mines;
 			gFlagsCount = gMines;
-			// console.log(gSize);
 		}
 	}
 	startPlay();
@@ -297,10 +292,9 @@ function startTime() {
 		s = 0;
 		m++;
 	}
-	if (s < 10) {			  // add zero in front of numbers < 10
+	if (s < 10) {			 
 		s = "0" + s
 	};
-	// console.log(m,':' ,s);
 	document.querySelector('.clock').innerHTML = m + ':' + s; 
 }
 
@@ -308,5 +302,4 @@ function getRandomInt(min, max) {
 	return Math.floor(Math.random() * (max - min + 1) + min);
 }
 
-// eliminate window of rightClick mouse:
 document.addEventListener('contextmenu', event => event.preventDefault()); 	

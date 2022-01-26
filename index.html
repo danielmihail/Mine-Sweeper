@@ -3,7 +3,7 @@
 
 <head>
   <meta charset="utf-8">
-  <title>Mine Sweeper</title>
+  <title>Mined Sweeper</title>
   <link rel="stylesheet" href="CSS/main.css">
 </head>
 
@@ -11,12 +11,7 @@
   <h1>Mine Sweeper</h1>
   <div class="body">
     <div class="start">
-      <h2>choose your level:</h2>
-      <form class="form-levels">
-        <input type="button" onclick="getLevel(this)" name="level" id="1" value="begginer"> (4X4, 2 mines) <br>
-        <input type="button" onclick="getLevel(this)" name="level" id="2" value="medium"> (8X8, 15 mines) <br>
-        <input type="button" onclick="getLevel(this)" name="level" id="3" value="expert" checked> (12X12 30 mines)
-      </form>
+      
     </div>
     <div class="game">
       <div class="game-header">
@@ -27,6 +22,12 @@
       <table>
         <tbody class="board"></tbody>
       </table>
+      <form class="form-levels">
+        <h2> choose your level:</h2>
+        <input type="button" onclick="getLevel(this)" name="level" id="1" value="Easy" checked> (4X4) 2 mines <br>
+        <input type="button" onclick="getLevel(this)" name="level" id="2" value="Medium" checked> (8X8) 15 mines <br>
+        <input type="button" onclick="getLevel(this)" name="level" id="3" value="Hard" checked> (12X12) 30 mines<br>
+      </form>
     </div>
   </div>
   <script src="JS/main.js"></script>

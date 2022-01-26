@@ -2,8 +2,9 @@ body {
     background-color:  #34801d;
     background-image:url(../IMG/mines.png);
     background-size: cover;
-    color:black;
-    text-align: center
+    color:rgb(0, 0, 0);
+    text-align: center;
+    position:relative;
 }
 
 .cell {
@@ -13,18 +14,27 @@ body {
 }
 
 .shown {
-    background-color: gray;
+    background-color: lightslategray;
 }
 
 .button {
-    height: 25px;
+    height: 30px;
+    border-color: black;
+    border-radius: 5px;
+    border: 3px solid;
+    position: relative;
+    font-size: larger;
+    font-weight: bolder;
     cursor: pointer;
+    background-color: lightslategray;
 }
 
 .start {
-    display: flex;
-    flex-direction: column;
-    margin: 100px 275px;
+    display:flex;
+    flex-direction:inherit;
+    width: 610px;
+    height: auto;
+    /* margin: auto; */
 }
 
 .body {
@@ -32,7 +42,15 @@ body {
 }
 
 form {
-    text-align: left;
+    position: absolute;
+    top:800px;
+    right: 20px;
+    width: 100%;
+    margin: 10px;
+  text-align: center;
+    font-size: larger;
+    font-weight: bolder;
+    text-align: bottom;
 }
 
 .game {
@@ -47,7 +65,8 @@ form {
 }
 .board {
     border:20px;
-
+    width: auto;
+    height: auto;
     margin: auto;
 }
 
@@ -57,8 +76,8 @@ img {
 }
 
 .table-head {
-    height: 65px;
-    background-color: rgba(10, 0, 0, 0.267);
+    height: 60px;
+    background-color: rgba(10, 0, 0, 0.671);
 } 
 
 td {
@@ -71,19 +90,30 @@ td {
 table {
     border: 100px;
     color: black;
-    margin-left: center;
+    margin-left: center; 
 }
 
 h2 {
     margin: 0 10px;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+h1 {
+    font-size: 35px;
+    font-family: 'Courier New', Courier, monospace;
+    font-weight: bolder;
+    text-align: center;
 }
 
 .mines-container, .clock-container {
     display: flex;
     width: 65px;
     height: 25px;
-    border: 2px solid;
+    border: 3px solid;
     border-radius: 5px;
     align-items: center;
     justify-content: center;
+    font-size:x-large;
+    font-weight: bolder;
+    background-color: lightslategray;
 }
