@@ -1,0 +1,89 @@
+body {
+    background-color:  #34801d;
+    background-image:url(../IMG/mines.png);
+    background-size: cover;
+    color:black;
+    text-align: center
+}
+
+.cell {
+    width:50px; 
+    height:50px;
+    text-align: center
+}
+
+.shown {
+    background-color: gray;
+}
+
+.button {
+    height: 25px;
+    cursor: pointer;
+}
+
+.start {
+    display: flex;
+    flex-direction: column;
+    margin: 100px 275px;
+}
+
+.body {
+    display: flex;
+}
+
+form {
+    text-align: left;
+}
+
+.game {
+    display: flex;
+    flex-direction: column;
+    
+}
+.game-header {
+    display: flex;
+    justify-content: space-around;
+    
+}
+.board {
+    border:20px;
+
+    margin: auto;
+}
+
+img {
+    width: 30px;
+    height: 30px;
+}
+
+.table-head {
+    height: 65px;
+    background-color: rgba(10, 0, 0, 0.267);
+} 
+
+td {
+    background-color: rgb(27, 26, 26);
+    text-align: center;
+    width: 30px;
+    height: 30px;
+}
+
+table {
+    border: 100px;
+    color: black;
+    margin-left: center;
+}
+
+h2 {
+    margin: 0 10px;
+}
+
+.mines-container, .clock-container {
+    display: flex;
+    width: 65px;
+    height: 25px;
+    border: 2px solid;
+    border-radius: 5px;
+    align-items: center;
+    justify-content: center;
+}
