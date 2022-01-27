@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <title>Mine Sweeper</title>
+  <link rel="stylesheet" href="CSS/main.css">
+</head>
+
+<body onload="init()">
+  <h1>Mine Sweeper</h1>
+  <div class="game-header">
+    <button type="button" class="button" onclick="startPlay()">New Game</button>
+    <div class="mines-container"></div>
+    <div class="clock-container"></div>
+    <div class="lives-container"></div>
+  </div>
+  <div class="body">
+
+    <div class="game">
+ 
+      <table>
+        <tbody class="board"></tbody>
+      </table>
+      <form class="form-levels">
+        <h2> choose your level:</h2>
+        <input type="button" onclick="getLevel(this)" name="level" id="1" value="Easy" checked> (4X4) 2 mines <br>
+        <input type="button" onclick="getLevel(this)" name="level" id="2" value="Medium" checked> (8X8) 15 mines <br>
+        <input type="button" onclick="getLevel(this)" name="level" id="3" value="Hard" checked> (12X12) 30 mines<br>
+      </form>
+    </div>
+  </div>
+  <script src="JS/main.js"></script>
+</body>
+
+</html>

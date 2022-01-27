@@ -1,0 +1,152 @@
+body {
+    background:url(../IMG/mines.png) no-repeat center center fixed;
+    background-size: cover;
+    background-repeat: no-repeat;
+    color:rgb(0, 0, 0);
+    text-align: center;
+    position:relative;
+}
+
+.cell {
+    width:45px; 
+    height:45px;
+    text-align: center
+}
+
+.shown {
+    background-color: lightslategray;
+}
+
+/* .button {
+    height: 50%;
+    border-color: black;
+    border-radius: 5px;
+    border: 3px solid;
+    display: inline-block;
+    font-size: 16px;
+    font-weight: bolder;
+    cursor: pointer;
+    background-color: lightslategray;
+} */
+
+/* .start {
+    display:flex;
+    flex-direction:inherit;
+    width: 610px;
+    height: auto;
+    // margin: auto; 
+} */
+
+.body {
+    display: flex;
+}
+
+form {
+    position: fixed;
+    display: block;
+    bottom:0px;
+    right: 20px;
+    width: 100%;
+    margin: 10px;
+  text-align: center;
+    font-size: larger;
+    font-weight: bolder;
+    text-align: bottom;
+}
+
+.game {
+    
+    display: block;
+    margin: 0 auto;
+    flex-direction: column;
+    
+}
+.game-header {
+    display: inline-block;
+    /* width:100%; */
+    width: auto;
+    height:50px;
+    justify-content: space-around;
+    
+}
+.board {
+    border:20px;
+    width: auto;
+    height: auto;
+    margin: auto;
+}
+
+img {
+    width: 30px;
+    height: 30px;
+}
+
+.table-head {
+    height: 60px;
+    background-color: rgba(10, 0, 0, 0.671);
+} 
+
+td {
+    background-color: rgb(27, 26, 26);
+    text-align: center;
+    width: 30px;
+    height: 30px;
+}
+
+table {
+    border: 100px;
+    color: black;
+    margin-left: center; 
+}
+
+h2 {
+    margin: 0 10px;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+h1 {
+    font-size: 35px;
+    font-family: 'Courier New', Courier, monospace;
+    font-weight: bolder;
+    text-align: center;
+}
+
+.mines-container, .clock-container, .button {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    display:block;
+    width: 100px;
+    height: 25px;
+    border:1px solid black;
+    border-radius: 5px;
+    align-items: center;
+    justify-content: center;
+    font-size:16px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bolder;
+    background-color: lightslategray;
+    float: left;
+    margin-left:10px;
+    line-height: 1.5;
+}
+
+.button {
+    cursor: pointer;
+    background-color: lightgreen;
+}
+
+.lives-container {
+    display: inline-block;
+    height: 80%;
+}
+
+.gIcon, .gLives {
+    font-size: 30px;
+    display: inline-block;
+}
+
+.gLives {
+    font-size: 18px;
+    margin-left: 10px;
+}
