@@ -3,22 +3,22 @@
 
 <head>
   <meta charset="utf-8">
-  <title>Mined Sweeper</title>
+  <title>Mine Sweeper</title>
   <link rel="stylesheet" href="CSS/main.css">
 </head>
 
 <body onload="init()">
   <h1>Mine Sweeper</h1>
+  <div class="game-header">
+    <button type="button" class="button" onclick="startPlay()">New Game</button>
+    <div class="mines-container"></div>
+    <div class="clock-container"></div>
+    <div class="lives-container"></div>
+  </div>
   <div class="body">
-    <div class="start">
-      
-    </div>
+
     <div class="game">
-      <div class="game-header">
-        <button type="button" class="button" onclick="startPlay()">new game</button>
-        <div class="mines-container"></div>
-        <div class="clock-container"></div>
-      </div>
+ 
       <table>
         <tbody class="board"></tbody>
       </table>

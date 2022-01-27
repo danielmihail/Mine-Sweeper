@@ -1,15 +1,15 @@
 body {
-    background-color:  #34801d;
-    background-image:url(../IMG/mines.png);
+    background:url(../IMG/mines.png) no-repeat center center fixed;
     background-size: cover;
+    background-repeat: no-repeat;
     color:rgb(0, 0, 0);
     text-align: center;
     position:relative;
 }
 
 .cell {
-    width:50px; 
-    height:50px;
+    width:45px; 
+    height:45px;
     text-align: center
 }
 
@@ -17,33 +17,34 @@ body {
     background-color: lightslategray;
 }
 
-.button {
-    height: 30px;
+/* .button {
+    height: 50%;
     border-color: black;
     border-radius: 5px;
     border: 3px solid;
-    position: relative;
-    font-size: larger;
+    display: inline-block;
+    font-size: 16px;
     font-weight: bolder;
     cursor: pointer;
     background-color: lightslategray;
-}
+} */
 
-.start {
+/* .start {
     display:flex;
     flex-direction:inherit;
     width: 610px;
     height: auto;
-    /* margin: auto; */
-}
+    // margin: auto; 
+} */
 
 .body {
     display: flex;
 }
 
 form {
-    position: absolute;
-    top:800px;
+    position: fixed;
+    display: block;
+    bottom:0px;
     right: 20px;
     width: 100%;
     margin: 10px;
@@ -54,12 +55,17 @@ form {
 }
 
 .game {
-    display: flex;
+    
+    display: block;
+    margin: 0 auto;
     flex-direction: column;
     
 }
 .game-header {
-    display: flex;
+    display: inline-block;
+    /* width:100%; */
+    width: auto;
+    height:50px;
     justify-content: space-around;
     
 }
@@ -105,15 +111,42 @@ h1 {
     text-align: center;
 }
 
-.mines-container, .clock-container {
-    display: flex;
-    width: 65px;
+.mines-container, .clock-container, .button {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    display:block;
+    width: 100px;
     height: 25px;
-    border: 3px solid;
+    border:1px solid black;
     border-radius: 5px;
     align-items: center;
     justify-content: center;
-    font-size:x-large;
+    font-size:16px;
+    font-family: Arial, Helvetica, sans-serif;
     font-weight: bolder;
     background-color: lightslategray;
+    float: left;
+    margin-left:10px;
+    line-height: 1.5;
+}
+
+.button {
+    cursor: pointer;
+    background-color: lightgreen;
+}
+
+.lives-container {
+    display: inline-block;
+    height: 80%;
+}
+
+.gIcon, .gLives {
+    font-size: 30px;
+    display: inline-block;
+}
+
+.gLives {
+    font-size: 18px;
+    margin-left: 10px;
 }
