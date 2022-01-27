@@ -106,7 +106,7 @@ function renderBoard(board) {
 			if (currCell.type === SHOW) {
 				if (currCell.mine === true) {
 					strHTML += '💣';
-				} else strHTML += '<img src="img/' + currCell.gameElement + '.png">';
+				} else strHTML += '<img src="IMG/' + currCell.gameElement + '.png">';
 			} else if (currCell.flag === true) strHTML += FLAG;
 		}
 		strHTML += '</tr>\n';
