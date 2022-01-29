@@ -15,6 +15,7 @@ var gFlagsCount = 30;
 var gBoardClickable = true;
 var HOWMANYLIVES = 3;
 var gLives;
+var gGameOver;
 
 var gLevels = [
 	{ id: 1, name: 'Easy', size: 4, mines: 3 },
@@ -39,6 +40,7 @@ function init() {
 	document.querySelector('.clock').innerHTML = m + ': 0' + s; 
 	renderBoard(gBoard);
 	gBoardClickable = true;
+	gGameOver = false;
 	
 }
 
@@ -121,6 +123,7 @@ function setFirstClick(i, j) {
 	addCountOfspace(i, j);
 	gTime = setInterval(startTime,1000);
 	gFirstClick = false;
+	isVictory();
 }
 
 function expandShown(i, j) {
@@ -138,7 +141,7 @@ function expandShown(i, j) {
 }
 
 function cellClicked(elCell, event) {
-	if (gBoardClickable) {
+	if (gBoardClickable && isGameOver() == false) {
 		var cellCoord = getCellCoord(elCell.id);
 		var i = cellCoord.i;
 		var j = cellCoord.j;
@@ -151,12 +154,18 @@ function cellClicked(elCell, event) {
 				gLives--;
 				adjustLives();
 				if (gLives == 0) {
+					if (gFlagsCount > 0) {
+						gFlagsCount--;
+						renderMinesCount();
+					}
 					gIcon = SAD;
 					gBoardClickable = false;
 					gameOver(true);
 				} else {
-					gFlagsCount--;
-					renderMinesCount();
+					if (gFlagsCount > 0) {
+						gFlagsCount--;
+						renderMinesCount();
+					}
 				}
 				// alert(isVictory());
 			}
@@ -179,8 +188,8 @@ function cellMarked(elCell, event) {
 	var cellCoord = getCellCoord(elCell.id);
 	var i = cellCoord.i;
 	var j = cellCoord.j;
-
-	if (event.button === 2) {
+	
+	if (event.button === 2 && isGameOver() == false) {
 		if (gBoard[i][j].flag === false && gBoard[i][j].type === HIDE) {
 			if (gFlagsCount > 0) {
 				gBoard[i][j].flag = true;
@@ -190,11 +199,12 @@ function cellMarked(elCell, event) {
 				renderBoard(gBoard);
 			}
 			return;
-		} if (gBoard[i][j].flag = true) {
+		} if (gBoard[i][j].flag == true && gBoard[i][j].type === HIDE) {
 			gBoard[i][j].flag = false;
 			gFlagsCount++;
 			renderMinesCount();
 			renderBoard(gBoard);
+			return;
 		}
 	}
 }
@@ -262,6 +272,16 @@ function countspaceMine(space) {
 	return count;
 }
 
+function isGameOver() {
+	if (isVictory() == false) {
+		if (gGameOver == true)
+			return true;
+		else
+			return false;
+	} else {
+		return true;
+	}
+}
 
 function gameOver(isTrue) {
 	if (isTrue && isVictory() == false) {
@@ -273,32 +293,33 @@ function gameOver(isTrue) {
 		clearInterval(gTime);
 		m = 0;
 		s = 0;
-        // alert('you lost!');
+		gGameOver = true;
+		return true;
+		
 	}
 }
 
 
 function isVictory() {
-	var countLivesLeft = HOWMANYLIVES;
-	while (countLivesLeft > 0) {
-		for (var i = 0; i < gBoard.length; i++) {
-			for (var j = 0; j < gBoard[0].length; j++) {
-				var cell = gBoard[i][j];
-				if (cell.type === HIDE && cell.mine === false) {
-					return false
-				}
-				if (cell.mine === true && cell.flag === false) {
-					countLivesLeft--;
-					if (countLivesLeft == 0)
-						return false;
-				}
+
+	for (var i = 0; i < gBoard.length; i++) {
+		for (var j = 0; j < gBoard[0].length; j++) {
+			var cell = gBoard[i][j];
+			if (cell.type === HIDE && cell.mine === false) {
+				return false
 			}
+			// if (cell.mine === true && cell.flag === false) {
+			// 	countLivesLeft--;
+			// 	if (countLivesLeft == 0)
+			// 		return false;
+			// }
 		}
-		gIcon = HAPPY;
-		clearInterval(gTime);
-		// alert('you won!');
-		return true;
 	}
+	gIcon = HAPPY;
+	clearInterval(gTime);
+	// alert('you won!');
+	gGameOver = true;
+	return true;
 
 }
 
